@@ -1,4 +1,4 @@
-import os
+iimport os
 import json
 import subprocess
 import tempfile
@@ -54,7 +54,21 @@ def upload(file_path, storage_path):
 
 
 class Handler(BaseHTTPRequestHandler):
-    def do_POST(self):
+
+    def do_GET(self):
+        if self.path == "/":
+            res = {"status": "ok"}
+            data = json.dumps(res).encode()
+            self.send_response(200)
+            self.send_header("Content-Type", "application/json")
+            self.send_header("Content-Length", str(len(data)))
+            self.end_headers()
+            self.wfile.write(data)
+        else:
+            self.send_response(404)
+            self.end_headers()
+
+    def do_POST(self): 
         if self.path != "/trim":
             self.send_response(404)
             self.end_headers()
