@@ -1,8 +1,8 @@
-Fly.io Trim Proxy — Option A (pure trim-and-return)
-Accepts a video URL, trims to max_duration via lossless stream-copy,
-and returns the raw trimmed MP4 bytes. No Supabase upload.
 """
-
+Fly.io Trim Proxy — Option A
+Accepts a video URL, trims to max_duration,
+and returns the raw trimmed MP4
+"""
 import json
 import os
 import subprocess
