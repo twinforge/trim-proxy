@@ -117,6 +117,11 @@ class Handler(BaseHTTPRequestHandler):
 
 
 if __name__ == "__main__":
+    from http.server import HTTPServer
+
+    PORT = int(os.environ.get("PORT", 8080))
+
     server = HTTPServer(("0.0.0.0", PORT), Handler)
-    print("Running on port", PORT)
+
+    print(f"Server running on port {PORT}")
     server.serve_forever()
