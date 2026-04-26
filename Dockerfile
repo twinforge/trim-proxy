@@ -1,11 +1,12 @@
-FROM alpine:3.19
+FROM python:3.11-slim
 
-RUN apk add --no-cache ffmpeg curl python3 py3-pip
+RUN apt-get update && apt-get install -y ffmpeg && rm -rf /var/lib/apt/lists/*
 
 WORKDIR /app
 
-COPY server.py /app/server.py
+COPY requirements.txt .
+RUN pip install --no-cache-dir -r requirements.txt
 
-EXPOSE 8080
+COPY server.py .
 
-CMD ["python3", "server.py"]
+CMD ["python", "-m", "uvicorn", "server:app", "--host", "0.0.0.0", "--port", "10000"]
