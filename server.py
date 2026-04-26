@@ -1,4 +1,4 @@
-```python
+
 """
 TwinForge ffmpeg proxy.
 
