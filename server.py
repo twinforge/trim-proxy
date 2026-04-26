@@ -299,4 +299,4 @@ def burn_captions(req: BurnCaptionsRequest):
         )
     finally:
         shutil.rmtree(work, ignore_errors=True)
-```
+
